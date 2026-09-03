@@ -1,0 +1,6 @@
+{
+  "name": "eOffice eFile 7.2.0",
+  "description": "eOffice eFile 7.2.0 digital workplace portal with receipt, file, dispatch management, diarisation, and inbox workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
