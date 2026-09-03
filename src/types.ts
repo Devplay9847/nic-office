@@ -182,12 +182,25 @@ export type SubMenuOption =
   | 'my_leaves'
   | 'apply_leave'
   | 'my_tours'
-  | 'apply_tour';
+  | 'apply_tour'
+  | 'kms_all'
+  | 'kms_csmop'
+  | 'kms_gfr'
+  | 'kms_sops'
+  | 'kms_space'
+  | 'leave_my'
+  | 'leave_apply'
+  | 'leave_approvals'
+  | 'leave_holidays'
+  | 'tour_my'
+  | 'tour_apply'
+  | 'tour_sanctions'
+  | 'tour_settlement';
 
 export interface KmsDocument {
   id: string;
   title: string;
-  category: 'CSMOP & Procedures' | 'GFR & Financial Rules' | 'CCS Conduct & Leave' | 'eOffice SOPs' | 'Finance Dept Circulars';
+  category: 'CSMOP & Procedures' | 'GFR & Financial Rules' | 'CCS Conduct & Leave' | 'eOffice SOPs' | 'Space Policy & Acts' | 'Finance Dept Circulars';
   refNumber: string;
   date: string;
   issuedBy: string;
@@ -195,10 +208,13 @@ export interface KmsDocument {
   fileType: 'pdf' | 'odt' | 'docx';
   size: string;
   downloadUrl?: string;
+  starred?: boolean;
+  content?: string;
 }
 
 export interface LeaveApplication {
   id: string;
+  applicationNo?: string;
   employeeName: string;
   designation: string;
   department: string;
@@ -211,13 +227,17 @@ export interface LeaveApplication {
   stationLeavingAddress?: string;
   contactNumber: string;
   appliedDate: string;
-  status: 'Sanctioned' | 'Under Review' | 'Recommended' | 'Rejected';
+  status: 'Sanctioned' | 'Approved' | 'Under Review' | 'Recommended' | 'Rejected' | 'Cancelled';
   sanctionedBy?: string;
   remarks?: string;
+  relievingOfficer?: string;
+  prefixHolidays?: string;
+  suffixHolidays?: string;
 }
 
 export interface TourApplication {
   id: string;
+  proposalNo?: string;
   officerName: string;
   designation: string;
   department: string;
@@ -229,9 +249,22 @@ export interface TourApplication {
   travelMode: 'Air (Economy)' | 'Train (AC 1st / 2nd)' | 'Official Vehicle' | 'State Road Transport';
   estimatedCost: number;
   advanceRequested: number;
-  status: 'Approved' | 'Pending Sanction' | 'Settlement Submitted';
+  status: 'Approved' | 'Sanctioned' | 'Pending Sanction' | 'Settlement Submitted' | 'Completed' | 'Rejected';
   sanctionedDate?: string;
   officeOrderNo?: string;
+  sanctionOrderNo?: string;
+  approvingAuthority?: string;
+  settlementDetails?: {
+    airFare: number;
+    dailyAllowance: number;
+    hotelLodging: number;
+    localConveyance: number;
+    totalClaimed: number;
+    advanceDeducted: number;
+    netPayable: number;
+    submissionDate: string;
+    settledBy?: string;
+  };
 }
 
 export interface NotificationItem {

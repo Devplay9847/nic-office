@@ -91,6 +91,17 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
               <span>All Official Documents</span>
             </button>
             <button
+              onClick={() => onSelectOption('kms_space')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'kms_space'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Space Policy & GASA-2024</span>
+            </button>
+            <button
               onClick={() => onSelectOption('kms_csmop')}
               className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
                 activeOption === 'kms_csmop'
@@ -160,6 +171,17 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
               <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
               <span>Department Approvals</span>
             </button>
+            <button
+              onClick={() => onSelectOption('leave_holidays')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'leave_holidays'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Gazetted Holidays 2026</span>
+            </button>
           </div>
         ) : activeModule === 'etour' ? (
           /* ================= ETOUR MODULE NAVIGATION ================= */
@@ -195,7 +217,18 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
               }`}
             >
               <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
-              <span>Sanction Orders & TA/DA</span>
+              <span>Sanction Orders</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('tour_settlement')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'tour_settlement'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>TA/DA Bill Claims</span>
             </button>
           </div>
         ) : activeModule === 'file' ? (

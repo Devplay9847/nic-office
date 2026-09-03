@@ -959,6 +959,19 @@ export default function App() {
             <KMSWorkspace
               documents={kmsDocuments}
               activeOption={activeOption}
+              onSelectOption={setActiveOption}
+              onReferenceCopy={(citation) => {
+                showToast(`Copied: ${citation}`);
+              }}
+              onAddDocument={(doc) => {
+                setKmsDocuments((prev) => [doc, ...prev]);
+                showToast(`Uploaded circular ${doc.refNumber} to KMS repository.`);
+              }}
+              onToggleBookmark={(id) => {
+                setKmsDocuments((prev) =>
+                  prev.map((d) => (d.id === id ? { ...d, starred: !d.starred } : d))
+                );
+              }}
               onOpenDocument={(doc) => {
                 showToast(`Opened KMS document: ${doc.title}`);
               }}
@@ -967,30 +980,49 @@ export default function App() {
             <ELeaveWorkspace
               leaveApplications={leaveApplications}
               activeOption={activeOption}
+              onSelectOption={setActiveOption}
               onApplyLeave={(app) => {
                 setLeaveApplications((prev) => [app, ...prev]);
-                showToast(`Leave application ${app.applicationNo} submitted successfully.`);
+                showToast(`Leave application ${app.applicationNo || 'submitted'} recorded successfully.`);
               }}
-              onApproveLeave={(id) => {
+              onApproveLeave={(id, remarks) => {
                 setLeaveApplications((prev) =>
-                  prev.map((a) => (a.id === id ? { ...a, status: 'Approved' } : a))
+                  prev.map((a) =>
+                    a.id === id
+                      ? {
+                          ...a,
+                          status: 'Sanctioned',
+                          sanctionedBy: 'DR. RAJESH SHARMA (Director, Authorisation)',
+                          remarks: remarks || 'Sanctioned with DSC authentication.',
+                        }
+                      : a
+                  )
                 );
-                showToast('Leave request sanctioned by Reporting Officer.');
+                showToast('Leave request sanctioned with Digital Signature (DSC).');
               }}
-              onRejectLeave={(id) => {
+              onRejectLeave={(id, remarks) => {
                 setLeaveApplications((prev) =>
-                  prev.map((a) => (a.id === id ? { ...a, status: 'Rejected' } : a))
+                  prev.map((a) =>
+                    a.id === id
+                      ? {
+                          ...a,
+                          status: 'Rejected',
+                          remarks: remarks || 'Returned due to service exigency.',
+                        }
+                      : a
+                  )
                 );
-                showToast('Leave request returned.');
+                showToast('Leave request returned with remarks.');
               }}
             />
           ) : activeModule === 'etour' ? (
             <ETourWorkspace
               tourApplications={tourApplications}
               activeOption={activeOption}
+              onSelectOption={setActiveOption}
               onApplyTour={(tour) => {
                 setTourApplications((prev) => [tour, ...prev]);
-                showToast(`Official tour proposal ${tour.proposalNo} submitted.`);
+                showToast(`Official tour proposal ${tour.tourNo || tour.proposalNo} submitted.`);
               }}
               onApproveTour={(id) => {
                 setTourApplications((prev) =>
@@ -999,12 +1031,46 @@ export default function App() {
                       ? {
                           ...t,
                           status: 'Approved',
-                          sanctionOrderNo: `GO(Rt)/${Date.now().toString().slice(-4)}/2026/GAD`,
+                          sanctionOrderNo: `DOS/IN-SPACE/SO-2026/${Math.floor(100 + Math.random() * 900)}`,
+                          officeOrderNo: `IN-SPACE/TOUR-ORD/2026/${Math.floor(100 + Math.random() * 900)}`,
+                          sanctionedDate: new Date().toLocaleDateString('en-GB'),
+                          approvingAuthority: 'DR. RAJESH SHARMA (Director, Authorisation)',
                         }
                       : t
                   )
                 );
                 showToast('Official tour proposal approved & Sanction Order issued.');
+              }}
+              onSanctionTour={(id) => {
+                setTourApplications((prev) =>
+                  prev.map((t) =>
+                    t.id === id
+                      ? {
+                          ...t,
+                          status: 'Approved',
+                          sanctionOrderNo: `DOS/IN-SPACE/SO-2026/${Math.floor(100 + Math.random() * 900)}`,
+                          officeOrderNo: `IN-SPACE/TOUR-ORD/2026/${Math.floor(100 + Math.random() * 900)}`,
+                          sanctionedDate: new Date().toLocaleDateString('en-GB'),
+                          approvingAuthority: 'DR. RAJESH SHARMA (Director, Authorisation)',
+                        }
+                      : t
+                  )
+                );
+                showToast('Official tour proposal sanctioned & Sanction Order issued.');
+              }}
+              onSubmitSettlement={(id, details) => {
+                setTourApplications((prev) =>
+                  prev.map((t) =>
+                    t.id === id
+                      ? {
+                          ...t,
+                          status: 'Settlement Submitted',
+                          settlementDetails: details,
+                        }
+                      : t
+                  )
+                );
+                showToast('TA/DA adjustment bill submitted to Finance Wing for audit.');
               }}
             />
           ) : activeModule === 'file' ? (
