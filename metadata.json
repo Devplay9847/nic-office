@@ -1,6 +1,6 @@
 {
   "name": "eOffice eFile 7.2.0",
-  "description": "eOffice eFile 7.2.0 digital workplace portal with receipt, file, dispatch management, diarisation, and inbox workflows.",
+  "description": "IN-SPACe (Indian National Space Promotion and Authorisation Centre) eOffice 7.0 digital workplace portal replicating eFile, space authorisations, eLeave, KMS repositories, and DSC cryptographic token workflows.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

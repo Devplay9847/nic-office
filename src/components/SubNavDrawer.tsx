@@ -51,6 +51,12 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
         return 'Notices & Circulars';
       case 'migration':
         return 'File Movement';
+      case 'kms':
+        return 'KMS Repository';
+      case 'eleave':
+        return 'eLeave Portal';
+      case 'etour':
+        return 'eTour & Travel';
       case 'dsc':
         return 'DSC Token';
       default:
@@ -70,8 +76,129 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
 
       {/* Navigation Tree Items */}
       <div className="flex-1 overflow-y-auto py-1">
-        {/* ================= FILE MODULE NAVIGATION ================= */}
-        {activeModule === 'file' ? (
+        {/* ================= KMS MODULE NAVIGATION ================= */}
+        {activeModule === 'kms' ? (
+          <div className="space-y-0.5">
+            <button
+              onClick={() => onSelectOption('kms_all')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'kms_all'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>All Official Documents</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('kms_csmop')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'kms_csmop'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>CSMOP 2024 Procedures</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('kms_gfr')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'kms_gfr'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>GFR-2017 Procurement Rules</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('kms_sops')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'kms_sops'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>eOffice 7.0 SOPs</span>
+            </button>
+          </div>
+        ) : activeModule === 'eleave' ? (
+          /* ================= ELEAVE MODULE NAVIGATION ================= */
+          <div className="space-y-0.5">
+            <button
+              onClick={() => onSelectOption('leave_my')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'leave_my'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>My Leaves & Balances</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('leave_apply')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'leave_apply'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Apply for Leave</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('leave_approvals')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'leave_approvals'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Department Approvals</span>
+            </button>
+          </div>
+        ) : activeModule === 'etour' ? (
+          /* ================= ETOUR MODULE NAVIGATION ================= */
+          <div className="space-y-0.5">
+            <button
+              onClick={() => onSelectOption('tour_my')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'tour_my'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>My Tour Programs</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('tour_apply')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'tour_apply'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Apply for Tour</span>
+            </button>
+            <button
+              onClick={() => onSelectOption('tour_sanctions')}
+              className={`w-full px-3 py-2 text-left flex items-center gap-1.5 transition-colors cursor-pointer ${
+                activeOption === 'tour_sanctions'
+                  ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                  : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+              }`}
+            >
+              <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+              <span>Sanction Orders & TA/DA</span>
+            </button>
+          </div>
+        ) : activeModule === 'file' ? (
           <>
             {/* 1. Create New File (Collapsible) */}
             <div className="border-b border-[#303c4f]/40">
@@ -188,6 +315,23 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
                 <div className="flex items-center gap-1.5">
                   <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
                   <span className="group-hover:translate-x-0.5 transition-transform">Parked Files</span>
+                </div>
+              </button>
+            </div>
+
+            {/* 6. Part Files (CSMOP Sub-Matters) */}
+            <div className="border-b border-[#303c4f]/40">
+              <button
+                onClick={() => onSelectOption('part_files')}
+                className={`w-full px-3 py-2 text-left flex items-center justify-between transition-colors cursor-pointer group ${
+                  activeOption === 'part_files'
+                    ? 'bg-[#313c4f] text-white font-semibold border-l-3 border-[#0099ff]'
+                    : 'text-gray-200 hover:bg-[#323d50] hover:text-white'
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <Play className="w-2.5 h-2.5 text-[#00b4d8] fill-current" />
+                  <span className="group-hover:translate-x-0.5 transition-transform">Part Files</span>
                 </div>
               </button>
             </div>
@@ -388,10 +532,13 @@ export const SubNavDrawer: React.FC<SubNavDrawerProps> = ({
       {/* SubNav Footer / Node Status */}
       <div className="p-2 bg-[#1b222d] border-t border-[#293444] text-[10px] text-gray-400 flex flex-col gap-0.5">
         <div className="flex items-center justify-between">
-          <span>KSITM Local Node</span>
+          <span className="font-semibold text-gray-300">IN-SPACe Central Node</span>
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="System Online"></span>
         </div>
-        <span className="text-gray-500 truncate">IP: 10.162.24.110 (VPN-NIC)</span>
+        <div className="flex items-center justify-between text-gray-500 text-[9px]">
+          <span>IP: 10.162.24.110 (DOS-NIC)</span>
+          <span className="text-blue-400 font-mono">inspace.gov.in</span>
+        </div>
       </div>
     </div>
   );

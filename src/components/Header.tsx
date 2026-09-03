@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
-import { Bell, HelpCircle, Globe, ChevronDown, User, ShieldCheck, LogOut, RefreshCw, Key } from 'lucide-react';
+import {
+  Bell,
+  HelpCircle,
+  Globe,
+  ChevronDown,
+  User,
+  ShieldCheck,
+  LogOut,
+  RefreshCw,
+  Key,
+  FileText,
+  BookOpen,
+  Calendar,
+  Navigation,
+  Usb,
+  ExternalLink,
+} from 'lucide-react';
+import { ActiveModule } from '../types';
+import { InspaceLogo } from './InspaceLogo';
 
 interface HeaderProps {
+  activeModule: ActiveModule;
+  onSelectModule: (module: ActiveModule) => void;
+  onOpenDSC: () => void;
   onNotificationClick: () => void;
   onHelpClick: () => void;
   onProfileClick: () => void;
@@ -12,6 +33,9 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  activeModule,
+  onSelectModule,
+  onOpenDSC,
   onNotificationClick,
   onHelpClick,
   onProfileClick,
@@ -34,52 +58,30 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="relative w-full bg-[#0062b8] text-white shadow-md z-30 select-none">
       {/* Top Banner Row */}
       <div className="flex items-center justify-between px-3 py-1.5 h-14">
-        {/* Left Side: eOffice Logo & eFile 7.2.0 */}
-        <div className="flex items-center gap-4">
-          {/* Official eOffice Brand Logo */}
-          <div className="flex items-center gap-1 cursor-pointer" title="National Informatics Centre - eOffice v7.2.0">
-            <div className="flex items-baseline leading-none">
-              {/* Lowercase vibrant orange 'e' */}
-              <span className="text-[#fca311] font-bold text-2xl tracking-tighter drop-shadow-sm font-sans">
-                e
-              </span>
-              {/* 'Office' with Earth Globe inside 'O' */}
-              <div className="flex items-center">
-                <span className="relative inline-flex items-center justify-center font-bold text-2xl text-white tracking-tight ml-0.5">
-                  <span className="relative flex items-center justify-center">
-                    {/* Glowing Earth icon */}
-                    <span className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#00b4d8] via-[#0077b6] to-[#90e0ef] border border-white/80 shadow-inner inline-flex items-center justify-center overflow-hidden">
-                      <svg className="w-4 h-4 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M3.6 9h16.8M3.6 15h16.8" />
-                        <path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-                      </svg>
-                    </span>
-                  </span>
-                  <span className="font-bold text-2xl text-white ml-0.5">ffice</span>
+        {/* Left Side: IN-SPACe White Label Brand Logo & eOffice eFile 7.2.0 */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Official IN-SPACe White-label Logo & Organization Title */}
+          <InspaceLogo />
+
+          {/* eOffice Brand & Version Tag */}
+          <div className="hidden lg:flex items-center gap-2.5 border-l border-blue-400/40 pl-3">
+            <div className="flex items-center gap-1 cursor-pointer opacity-95 hover:opacity-100 transition-opacity" title="National Informatics Centre - eOffice v7.2.0">
+              <div className="flex items-baseline leading-none">
+                <span className="text-[#fca311] font-bold text-xl tracking-tighter drop-shadow-sm font-sans">
+                  e
                 </span>
+                <span className="font-bold text-xl text-white ml-0.5">Office</span>
               </div>
             </div>
-          </div>
 
-          {/* Slogan pill under logo */}
-          <div className="hidden sm:flex flex-col border-l border-blue-400/40 pl-3">
-            <div className="text-[9px] uppercase tracking-widest text-blue-100 font-semibold leading-tight opacity-90">
-              A DIGITAL WORKPLACE SOLUTION
+            <div className="flex items-center gap-1 pl-2 border-l border-blue-400/30">
+              <span className="text-white text-xs font-normal tracking-wide">
+                eFile
+              </span>
+              <span className="text-[#ffd54f] font-semibold text-xs tracking-wider">
+                7.2.0
+              </span>
             </div>
-            <div className="text-[8px] text-blue-200 tracking-wider">
-              National Informatics Centre (NIC)
-            </div>
-          </div>
-
-          {/* eFile 7.2.0 text */}
-          <div className="flex items-center gap-1.5 ml-2 pl-2 border-l border-blue-400/30">
-            <span className="text-white text-base font-normal tracking-wide">
-              eFile
-            </span>
-            <span className="text-[#ffd54f] font-semibold text-sm tracking-wider">
-              7.2.0
-            </span>
           </div>
         </div>
 
@@ -169,10 +171,10 @@ export const Header: React.FC<HeaderProps> = ({
               {/* User text stack */}
               <div className="hidden md:flex flex-col leading-tight">
                 <span className="text-[#ffd54f] font-bold text-xs tracking-wider">
-                  AUDITOR1
+                  DIRECTOR_AUTH
                 </span>
-                <span className="text-[10px] text-blue-100 opacity-90 truncate max-w-[150px]">
-                  Auditor1, Finance, KSITM
+                <span className="text-[10px] text-blue-100 opacity-90 truncate max-w-[170px]">
+                  Authorisation Wing, IN-SPACe
                 </span>
               </div>
 
@@ -180,14 +182,31 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {profileDropdownOpen && (
-              <div className="absolute right-0 mt-1 w-64 bg-white text-gray-800 rounded shadow-xl border border-gray-200 py-1.5 text-xs z-50 animate-fadeIn">
-                <div className="px-3 py-2 border-b border-gray-100 bg-blue-50/50">
-                  <p className="font-bold text-sm text-gray-900">AUDITOR1</p>
-                  <p className="text-gray-600 text-[11px]">Auditor1, Finance Wing</p>
-                  <p className="text-gray-500 text-[10px]">Kerala State IT Mission (KSITM)</p>
+              <div className="absolute right-0 mt-1 w-72 bg-white text-gray-800 rounded shadow-xl border border-gray-200 py-1.5 text-xs z-50 animate-fadeIn">
+                <div className="px-3 py-2 border-b border-gray-100 bg-blue-50/60">
+                  <div className="flex items-center justify-between">
+                    <p className="font-bold text-sm text-gray-900">DR. RAJESH SHARMA</p>
+                    <span className="text-[9px] bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded font-mono font-bold">
+                      IN-SPACe
+                    </span>
+                  </div>
+                  <p className="text-gray-700 text-[11px] font-medium">Joint Director (Space Authorisation & Regulatory)</p>
+                  <p className="text-gray-500 text-[10px]">Indian National Space Promotion and Authorisation Centre</p>
+                  <p className="text-gray-400 text-[9px]">Department of Space, Government of India</p>
+
+                  <a
+                    href="https://www.inspace.gov.in"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1.5 inline-flex items-center gap-1 text-[10px] text-blue-700 hover:text-blue-900 hover:underline font-medium"
+                  >
+                    <span>Visit inspace.gov.in</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+
                   <div className="mt-1 flex items-center gap-1 text-[10px] text-emerald-700 font-medium">
                     <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                    <span>DSC Token: Connected (Class 3)</span>
+                    <span>DSC Token: Connected (Class 3 Govt)</span>
                   </div>
                 </div>
 
@@ -241,6 +260,81 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* eOffice 7 WAW Portal Application Switcher Bar */}
+      <div className="bg-[#004f96] border-t border-blue-400/20 px-3 flex items-center justify-between text-xs h-8">
+        <div className="flex items-center gap-1 overflow-x-auto">
+          {/* 1. eFile / Receipts (FMS) */}
+          <button
+            onClick={() => onSelectModule('file')}
+            className={`px-3 py-1 rounded flex items-center gap-1.5 font-bold transition-all cursor-pointer ${
+              activeModule === 'file' || activeModule === 'receipt' || activeModule === 'draft' || activeModule === 'dispatch' || activeModule === 'notesheet' || activeModule === 'migration'
+                ? 'bg-[#00386b] text-white shadow-inner ring-1 ring-white/20'
+                : 'text-blue-100 hover:bg-[#004585] hover:text-white'
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5 text-amber-300" />
+            <span>eFile (FMS)</span>
+          </button>
+
+          {/* 2. KMS (Knowledge Management System) */}
+          <button
+            onClick={() => onSelectModule('kms')}
+            className={`px-3 py-1 rounded flex items-center gap-1.5 font-bold transition-all cursor-pointer ${
+              activeModule === 'kms'
+                ? 'bg-[#00386b] text-white shadow-inner ring-1 ring-white/20'
+                : 'text-blue-100 hover:bg-[#004585] hover:text-white'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+            <span>KMS (Circulars & Rules)</span>
+          </button>
+
+          {/* 3. eLeave */}
+          <button
+            onClick={() => onSelectModule('eleave')}
+            className={`px-3 py-1 rounded flex items-center gap-1.5 font-bold transition-all cursor-pointer ${
+              activeModule === 'eleave'
+                ? 'bg-[#00386b] text-white shadow-inner ring-1 ring-white/20'
+                : 'text-blue-100 hover:bg-[#004585] hover:text-white'
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5 text-amber-300" />
+            <span>eLeave</span>
+            <span className="text-[9px] bg-amber-500/80 text-white px-1 rounded-full font-mono">8 CL</span>
+          </button>
+
+          {/* 4. eTour */}
+          <button
+            onClick={() => onSelectModule('etour')}
+            className={`px-3 py-1 rounded flex items-center gap-1.5 font-bold transition-all cursor-pointer ${
+              activeModule === 'etour'
+                ? 'bg-[#00386b] text-white shadow-inner ring-1 ring-white/20'
+                : 'text-blue-100 hover:bg-[#004585] hover:text-white'
+            }`}
+          >
+            <Navigation className="w-3.5 h-3.5 text-amber-300" />
+            <span>eTour</span>
+          </button>
+
+          {/* 5. DSC Token Hub */}
+          <button
+            onClick={onOpenDSC}
+            className="px-3 py-1 rounded flex items-center gap-1.5 font-bold text-blue-100 hover:bg-[#004585] hover:text-white transition-all cursor-pointer"
+          >
+            <Usb className="w-3.5 h-3.5 text-emerald-300" />
+            <span>DSC Token Hub</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          </button>
+        </div>
+
+        {/* Right Help Desk Contact */}
+        <div className="hidden lg:flex items-center gap-3 text-[11px] text-blue-200">
+          <span>NIC eOffice Helpdesk: <strong>1800-111-555</strong></span>
+          <span className="text-blue-300/40">•</span>
+          <span>Instance: <strong>Kerala State WAN (KSWAN)</strong></span>
         </div>
       </div>
     </header>

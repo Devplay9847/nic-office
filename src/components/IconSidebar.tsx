@@ -157,7 +157,53 @@ export const IconSidebar: React.FC<IconSidebarProps> = ({
         </div>
       </button>
 
-      {/* 7. DSC (Digital Signature Certificate) USB Token Icon with vertical 'DSC' */}
+      {/* 7. KMS (Knowledge Management System) ICON */}
+      <button
+        onClick={() => onSelectModule('kms')}
+        title="KMS — Knowledge Management System"
+        className={`relative w-10 h-10 my-0.5 rounded flex items-center justify-center transition-all cursor-pointer ${
+          activeModule === 'kms'
+            ? 'bg-[#004785] shadow-inner ring-1 ring-white/30 text-white'
+            : 'text-white/90 hover:bg-[#004e90] hover:text-white'
+        }`}
+      >
+        <div className="relative w-6 h-6 border-2 border-white rounded-[2px] flex items-center justify-center bg-[#005ba8]">
+          <span className="font-bold text-[9px] text-amber-300 font-mono">KMS</span>
+        </div>
+      </button>
+
+      {/* 8. eLeave ICON */}
+      <button
+        onClick={() => onSelectModule('eleave')}
+        title="eLeave — Leave Management System"
+        className={`relative w-10 h-10 my-0.5 rounded flex items-center justify-center transition-all cursor-pointer ${
+          activeModule === 'eleave'
+            ? 'bg-[#004785] shadow-inner ring-1 ring-white/30 text-white'
+            : 'text-white/90 hover:bg-[#004e90] hover:text-white'
+        }`}
+      >
+        <div className="relative w-6 h-6 border-2 border-white rounded-[2px] flex flex-col items-center justify-center bg-[#005ba8]">
+          <div className="w-full h-1 bg-amber-400"></div>
+          <span className="font-bold text-[8px] text-white">LV</span>
+        </div>
+      </button>
+
+      {/* 9. eTour ICON */}
+      <button
+        onClick={() => onSelectModule('etour')}
+        title="eTour — Tour & Travel Management"
+        className={`relative w-10 h-10 my-0.5 rounded flex items-center justify-center transition-all cursor-pointer ${
+          activeModule === 'etour'
+            ? 'bg-[#004785] shadow-inner ring-1 ring-white/30 text-white'
+            : 'text-white/90 hover:bg-[#004e90] hover:text-white'
+        }`}
+      >
+        <div className="relative w-6 h-6 border-2 border-white rounded-[2px] flex items-center justify-center bg-[#005ba8]">
+          <span className="font-bold text-[8px] text-white font-mono">TOUR</span>
+        </div>
+      </button>
+
+      {/* 10. DSC (Digital Signature Certificate) USB Token Icon */}
       <button
         onClick={onOpenDSC}
         title="Digital Signature Certificate (DSC) USB Token"

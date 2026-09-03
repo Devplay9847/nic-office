@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, User, ShieldCheck, Key, RefreshCw, CheckCircle2, Award, Building, HardDrive } from 'lucide-react';
+import { X, User, ShieldCheck, Key, RefreshCw, CheckCircle2, Award, Building, HardDrive, ExternalLink } from 'lucide-react';
+import { InspaceLogo } from './InspaceLogo';
 
 interface UserProfileModalProps {
   isOpen: boolean;
@@ -21,7 +22,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         <div className="bg-[#0062b8] text-white px-4 py-2.5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4" />
-            <h2 className="text-sm font-bold">User Information & Credentials - AUDITOR1</h2>
+            <h2 className="text-sm font-bold">User Information & Credentials - IN-SPACe Official</h2>
           </div>
           <button onClick={onClose} className="p-1 hover:bg-blue-700 rounded text-white cursor-pointer">
             <X className="w-4 h-4" />
@@ -66,33 +67,53 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
         <div className="p-4 text-xs space-y-3">
           {activeTab === 'profile' && (
             <div className="space-y-3">
-              <div className="flex items-center gap-3 bg-blue-50 p-3 rounded border border-blue-200">
-                <div className="w-12 h-12 rounded-full bg-white text-blue-800 flex items-center justify-center border border-blue-300 font-bold text-lg shadow-sm">
-                  A1
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-sm">AUDITOR1 (Primary User)</h3>
-                  <p className="text-gray-600 text-xs">Auditor1, Finance & Statutory Audit</p>
-                  <p className="text-gray-500 text-[11px]">Kerala State Information Technology Mission (KSITM)</p>
+              <div className="flex items-center gap-3 bg-blue-50/70 p-3 rounded border border-blue-200">
+                <InspaceLogo className="h-9" showSubtext={false} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-gray-900 text-sm">DR. RAJESH SHARMA</h3>
+                    <span className="text-[10px] bg-blue-900 text-blue-100 font-bold px-2 py-0.5 rounded font-mono">
+                      DIRECTOR_AUTH
+                    </span>
+                  </div>
+                  <p className="text-gray-700 font-medium text-xs">Joint Director (Space Authorisation & Regulatory)</p>
+                  <p className="text-gray-600 text-[11px]">Indian National Space Promotion and Authorisation Centre (IN-SPACe)</p>
+                  <p className="text-gray-500 text-[10px]">Department of Space (DOS), Government of India</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 bg-gray-50 p-3 rounded border border-gray-200">
                 <div>
                   <span className="text-gray-500 block">NIC Parichay ID:</span>
-                  <span className="font-mono font-semibold text-gray-800">auditor1.ksitm@nic.in</span>
+                  <span className="font-mono font-semibold text-gray-800">r.sharma.inspace@nic.in</span>
                 </div>
                 <div>
                   <span className="text-gray-500 block">Department Node:</span>
-                  <span className="font-semibold text-gray-800">KSITM Finance Branch</span>
+                  <span className="font-semibold text-gray-800">IN-SPACe Ahmedabad HQ</span>
                 </div>
                 <div>
                   <span className="text-gray-500 block">Designation:</span>
-                  <span className="font-semibold text-gray-800">Junior Auditor Grade I</span>
+                  <span className="font-semibold text-gray-800">Joint Director (Grade I)</span>
+                </div>
+                <div>
+                  <span className="text-gray-500 block">Official Portal:</span>
+                  <a
+                    href="https://www.inspace.gov.in"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-blue-700 hover:underline"
+                  >
+                    <span>www.inspace.gov.in</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+                <div>
+                  <span className="text-gray-500 block">Nodal Ministry:</span>
+                  <span className="font-semibold text-gray-800">Department of Space (DOS)</span>
                 </div>
                 <div>
                   <span className="text-gray-500 block">eOffice Version:</span>
-                  <span className="font-semibold text-emerald-800">eFile 7.2.0 (Stable)</span>
+                  <span className="font-semibold text-emerald-800">eFile 7.2.0 (IN-SPACe Node)</span>
                 </div>
               </div>
             </div>
@@ -104,18 +125,22 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
                 <div>
                   <h4 className="font-bold">Digital Signature Status: Active & Ready</h4>
-                  <p className="text-[11px] text-emerald-800">Hardware Crypto Token plugged into local USB port</p>
+                  <p className="text-[11px] text-emerald-800">FIPS 140-2 Level 3 Hardware Crypto Token plugged into local USB port</p>
                 </div>
               </div>
 
               <div className="bg-gray-50 p-3 rounded border border-gray-200 space-y-1.5 font-mono text-[11px]">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Certificate Common Name (CN):</span>
-                  <span className="font-bold text-gray-900">AUDITOR1 - KSITM</span>
+                  <span className="font-bold text-gray-900">DR. RAJESH SHARMA - IN-SPACe (GOVT OF INDIA)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Organization (O):</span>
+                  <span className="text-gray-800">IN-SPACe, Department of Space</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Certifying Authority:</span>
-                  <span className="text-gray-800">NIC Sub-CA (CCA India)</span>
+                  <span className="text-gray-800">NIC Sub-CA for Digital Signature (CCA India)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Validity:</span>
@@ -123,7 +148,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Key Specification:</span>
-                  <span className="text-gray-800">RSA 2048-bit / SHA-256</span>
+                  <span className="text-gray-800">RSA 2048-bit / SHA-256 (ePass2003Auto)</span>
                 </div>
               </div>
             </div>
@@ -133,8 +158,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
             <div className="space-y-2">
               <div className="p-2.5 bg-gray-50 border border-gray-200 rounded flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-gray-900">Dealing Hand (Finance)</p>
-                  <p className="text-gray-500 text-[11px]">Can initiate notesheets and diarise receipts</p>
+                  <p className="font-bold text-gray-900">Authorisation & Regulatory Officer (Space Missions)</p>
+                  <p className="text-gray-500 text-[11px]">Scrutinise non-government space entity (NGE) applications and mission authorisations</p>
                 </div>
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
                   Active
@@ -143,8 +168,8 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({
 
               <div className="p-2.5 bg-gray-50 border border-gray-200 rounded flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-gray-900">Statutory Compliance Auditor</p>
-                  <p className="text-gray-500 text-[11px]">Audit verification and concurrence signatory</p>
+                  <p className="font-bold text-gray-900">ISRO Facilities Concurrence Signatory</p>
+                  <p className="text-gray-500 text-[11px]">Technical approvals for ISRO test facilities sharing and ground station authorisations</p>
                 </div>
                 <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
                   Active

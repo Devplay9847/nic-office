@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 130" width="100%" height="100%" style="overflow: visible;">
+  <defs>
+    <style>
+      .in-coral { fill: #CF7373; }
+      .space-navy { fill: #12458D; }
+    </style>
+  </defs>
+
+  <!-- ORBITAL ARC SWEEP -->
+  <!-- Sweeps from beneath S, loops under SPACe, wraps up around 'e', and arches over the top -->
+  <path d="M 215 90 C 230 106, 280 120, 360 120 C 445 120, 525 102, 545 68 C 555 52, 550 36, 528 26 C 485 10, 370 8, 275 34" 
+        fill="none" 
+        stroke="#12458D" 
+        stroke-width="3.5" 
+        stroke-linecap="round" />
+
+  <!-- SATELLITE (Positioned along orbital path at top right ~ x=518, y=28) -->
+  <g transform="translate(518, 27) rotate(-22)">
+    <!-- Solar Panels Left Wing -->
+    <rect x="-25" y="-2.5" width="7" height="5" fill="#12458D" rx="0.5" />
+    <rect x="-16" y="-2.5" width="7" height="5" fill="#12458D" rx="0.5" />
+    <line x1="-26" y1="0" x2="-8" y2="0" stroke="#12458D" stroke-width="1.2" />
+
+    <!-- Satellite Core Body (Coral) -->
+    <ellipse cx="0" cy="0" rx="4.5" ry="6.5" fill="#CF7373" />
+    
+    <!-- Solar Panels Right Wing -->
+    <rect x="9" y="-2.5" width="7" height="5" fill="#12458D" rx="0.5" />
+    <rect x="18" y="-2.5" width="7" height="5" fill="#12458D" rx="0.5" />
+    <line x1="8" y1="0" x2="26" y2="0" stroke="#12458D" stroke-width="1.2" />
+  </g>
+
+  <!-- "IN" in Coral Rose (#CF7373) -->
+  <g fill="#CF7373" id="logo-IN">
+    <!-- 'I' with double vertical parallel pillars -->
+    <rect x="28" y="44" width="7.5" height="46" rx="0.5" />
+    <rect x="40.5" y="44" width="7.5" height="46" rx="0.5" />
+
+    <!-- 'N' with vertical pillars and wide connecting diagonal -->
+    <rect x="62" y="44" width="8" height="46" rx="0.5" />
+    <polygon points="70,44 80,44 140,90 130,90" />
+    <rect x="132" y="44" width="8" height="46" rx="0.5" />
+  </g>
+
+  <!-- HYPHEN '-' in Deep Navy Blue -->
+  <rect x="153" y="64" width="16" height="8" rx="0.5" fill="#12458D" />
+
+  <!-- "SPACe" in Deep Navy Blue & Coral Rocket Fin -->
+  <g fill="#12458D" id="logo-SPACe">
+    <!-- 'S' - Futuristic Track Shape -->
+    <path d="M 230 44 
+             L 185 44 
+             C 176 44, 171 49, 171 58 
+             L 171 63 
+             C 171 72, 176 76, 185 76 
+             L 216 76 
+             L 216 82 
+             C 216 85, 212 86.5, 206 86.5 
+             L 172 86.5 
+             L 172 90 
+             L 216 90 
+             C 225 90, 230 86, 230 77 
+             L 230 71 
+             C 230 63, 225 59, 216 59 
+             L 185 59 
+             L 185 52 
+             C 185 48.5, 189 47.5, 195 47.5 
+             L 230 47.5 
+             Z" />
+
+    <!-- 'P' -->
+    <path d="M 241 44 
+             L 241 90 
+             L 249 90 
+             L 249 74 
+             L 278 74 
+             C 288 74, 293 68, 293 59 
+             L 293 57 
+             C 293 48, 288 44, 278 44 
+             Z 
+             M 249 50.5 
+             L 276 50.5 
+             C 281 50.5, 284 53, 284 58 
+             L 284 60 
+             C 284 65, 281 67.5, 276 67.5 
+             L 249 67.5 
+             Z" />
+
+    <!-- 'A' - Supersonic Delta Rocket Arrow (Navy Blue) -->
+    <!-- Sharp nose pointing at x=348, y=14 -->
+    <polygon points="348,14 301,90 336,90 348,68 360,90 395,90" />
+    <polygon points="348,36 324,84 348,68 372,84" fill="#ffffff" />
+  </g>
+
+  <!-- 'A' - Coral Secondary Delta Wing / Thrust Trail (Nested below right wing) -->
+  <polygon points="348,68 366,84 382,90 366,95 348,78" fill="#CF7373" />
+  <polygon points="360,84 388,90 376,96 348,78" fill="#CF7373" />
+
+  <!-- 'C' & 'e' in Deep Navy Blue -->
+  <g fill="#12458D">
+    <!-- 'C' -->
+    <path d="M 458 50.5 
+             L 423 50.5 
+             C 416 50.5, 412 54, 412 61 
+             L 412 73 
+             C 412 80, 416 83.5, 423 83.5 
+             L 458 83.5 
+             L 458 90 
+             L 421 90 
+             C 410 90, 403.5 84, 403.5 73 
+             L 403.5 61 
+             C 403.5 50, 410 44, 421 44 
+             L 458 44 
+             Z" />
+
+    <!-- 'e' (Explicit lowercase e matching exact logo) -->
+    <path d="M 470 57 
+             C 470 48, 477 44, 489 44 
+             L 512 44 
+             C 523 44, 529 49, 529 59 
+             L 529 75 
+             C 529 85, 523 90, 512 90 
+             L 489 90 
+             C 477 90, 470 85, 470 75 
+             Z 
+             M 478.5 63 
+             L 520.5 63 
+             L 520.5 59 
+             C 520.5 53, 517.5 50.5, 511 50.5 
+             L 489 50.5 
+             C 482.5 50.5, 478.5 53.5, 478.5 59 
+             Z 
+             M 478.5 70 
+             L 478.5 74 
+             C 478.5 79.5, 482.5 83.5, 489 83.5 
+             L 511 83.5 
+             C 517.5 83.5, 520.5 80.5, 520.5 76 
+             L 529 76 
+             C 529 85, 523 90, 512 90 
+             L 489 90 
+             C 477 90, 470 85, 470 75 
+             Z" />
+  </g>
+</svg>
